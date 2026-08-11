@@ -292,7 +292,7 @@ function CTASection() {
                             htmlFor="contact-contact"
                             className="mb-1.5 block text-[11px] font-bold uppercase tracking-wider text-cream/70"
                           >
-                            Email или Telegram
+                            Email, Telegram или WhatsApp
                           </label>
                           <input
                             id="contact-contact"
@@ -300,7 +300,7 @@ function CTASection() {
                             required
                             value={contact}
                             onChange={(e) => setContact(e.target.value)}
-                            placeholder="example@mail.ru / @user"
+                            placeholder="example@mail.ru / @user / +79..."
                             className="w-full rounded-xl border border-cream/10 bg-ink-900/80 px-4 py-3 text-sm text-cream placeholder:text-cream-dim focus:border-gold/50 focus:outline-none focus:ring-1 focus:ring-gold/40"
                           />
                         </div>

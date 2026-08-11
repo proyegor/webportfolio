@@ -29,6 +29,14 @@ export const metadata: Metadata = {
     "UX",
     "портфолио",
   ],
+  icons: {
+    icon: [
+      { url: "/webportfolio/favicon.ico", sizes: "any" },
+      { url: "/webportfolio/icon.png", type: "image/png" },
+    ],
+    shortcut: "/webportfolio/favicon.ico",
+    apple: "/webportfolio/apple-touch-icon.png",
+  },
   openGraph: {
     title: "Егор Прокопенков — Frontend-разработчик",
     description:
