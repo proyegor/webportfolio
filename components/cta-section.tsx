@@ -17,9 +17,17 @@ import confetti from "canvas-confetti";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
+const TELEGRAM_BOT_TOKEN = "8928885840:AAEq4UB6Pm_AYfIC6ZWGgLgKs4hamfgadQA";
+const TELEGRAM_CHAT_ID = "403491786";
+
 function CTASection() {
   const [copied, setCopied] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const [name, setName] = useState("");
+  const [contact, setContact] = useState("");
+  const [message, setMessage] = useState("");
 
   const email = "dbkuper89@gmail.com";
   const website = "eprokopenkov.online";
@@ -30,16 +38,38 @@ function CTASection() {
     setTimeout(() => setCopied(false), 2500);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setFormSubmitted(true);
-    confetti({
-      particleCount: 90,
-      spread: 75,
-      origin: { y: 0.6 },
-      colors: ["#C9A15E", "#E3C88F", "#EFE9DE", "#8A6A35"],
-    });
-    setTimeout(() => setFormSubmitted(false), 5000);
+    setIsSubmitting(true);
+
+    const telegramText = `📬 <b>Новая заявка с сайта-портфолио!</b>\n\n<b>👤 Имя:</b> ${name}\n<b>💬 Контакт:</b> ${contact}\n<b>📝 Детали проекта:</b>\n${message}`;
+
+    try {
+      await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          chat_id: TELEGRAM_CHAT_ID,
+          text: telegramText,
+          parse_mode: "HTML",
+        }),
+      });
+    } catch (err) {
+      console.error("Failed to send telegram notification:", err);
+    } finally {
+      setIsSubmitting(false);
+      setFormSubmitted(true);
+      setName("");
+      setContact("");
+      setMessage("");
+      confetti({
+        particleCount: 90,
+        spread: 75,
+        origin: { y: 0.6 },
+        colors: ["#C9A15E", "#E3C88F", "#EFE9DE", "#8A6A35"],
+      });
+      setTimeout(() => setFormSubmitted(false), 6000);
+    }
   };
 
   return (
@@ -245,6 +275,8 @@ function CTASection() {
                             id="contact-name"
                             type="text"
                             required
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
                             placeholder="Иван"
                             className="w-full rounded-xl border border-cream/10 bg-ink-900/80 px-4 py-3 text-sm text-cream placeholder:text-cream-dim focus:border-gold/50 focus:outline-none focus:ring-1 focus:ring-gold/40"
                           />
@@ -260,6 +292,8 @@ function CTASection() {
                             id="contact-contact"
                             type="text"
                             required
+                            value={contact}
+                            onChange={(e) => setContact(e.target.value)}
                             placeholder="example@mail.ru / @user"
                             className="w-full rounded-xl border border-cream/10 bg-ink-900/80 px-4 py-3 text-sm text-cream placeholder:text-cream-dim focus:border-gold/50 focus:outline-none focus:ring-1 focus:ring-gold/40"
                           />
@@ -277,6 +311,8 @@ function CTASection() {
                           id="contact-message"
                           rows={4}
                           required
+                          value={message}
+                          onChange={(e) => setMessage(e.target.value)}
                           placeholder="Здравствуйте, Егор! Хотим обсудить разработку…"
                           className="w-full resize-none rounded-xl border border-cream/10 bg-ink-900/80 px-4 py-3 text-sm text-cream placeholder:text-cream-dim focus:border-gold/50 focus:outline-none focus:ring-1 focus:ring-gold/40"
                         />
@@ -284,9 +320,10 @@ function CTASection() {
 
                       <button
                         type="submit"
-                        className="btn-gold group flex w-full items-center justify-center gap-2.5 rounded-full px-6 py-4 text-sm font-bold"
+                        disabled={isSubmitting}
+                        className="btn-gold group flex w-full items-center justify-center gap-2.5 rounded-full px-6 py-4 text-sm font-bold disabled:opacity-50"
                       >
-                        Отправить сообщение
+                        {isSubmitting ? "Отправка..." : "Отправить сообщение"}
                         <Send className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-0.5" />
                       </button>
 
