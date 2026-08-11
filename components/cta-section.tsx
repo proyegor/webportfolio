@@ -45,29 +45,22 @@ function CTASection() {
     const telegramText = `📬 <b>Новая заявка с сайта-портфолио!</b>\n\n<b>👤 Имя:</b> ${name}\n<b>💬 Контакт:</b> ${contact}\n<b>📝 Детали проекта:</b>\n${message}`;
 
     try {
-      const rawUrl = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage?chat_id=${TELEGRAM_CHAT_ID}&text=${encodeURIComponent(telegramText)}&parse_mode=HTML`;
-      const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(rawUrl)}`;
+      const formData = new FormData();
+      formData.append("chat_id", TELEGRAM_CHAT_ID);
+      formData.append("text", telegramText);
+      formData.append("parse_mode", "HTML");
 
-      // Try proxy first to bypass CORS / regional ISP blocks, fallback to direct fetch
-      const res = await fetch(proxyUrl);
-      const data = await res.json();
-      if (data && data.contents) {
-        console.log("Telegram notification sent via proxy:", data.contents);
-      }
+      await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+        method: "POST",
+        body: formData,
+      });
     } catch (err) {
-      console.warn("Proxy attempt failed, trying direct fetch...", err);
+      console.warn("Direct fetch failed, attempting proxy...", err);
       try {
-        await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            chat_id: TELEGRAM_CHAT_ID,
-            text: telegramText,
-            parse_mode: "HTML",
-          }),
-        });
-      } catch (directErr) {
-        console.error("Direct fetch failed:", directErr);
+        const rawUrl = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage?chat_id=${TELEGRAM_CHAT_ID}&text=${encodeURIComponent(telegramText)}&parse_mode=HTML`;
+        await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(rawUrl)}`);
+      } catch (proxyErr) {
+        console.error("Proxy fetch failed:", proxyErr);
       }
     } finally {
       setIsSubmitting(false);
