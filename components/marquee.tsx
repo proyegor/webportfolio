@@ -31,7 +31,9 @@ function Marquee() {
             className="mx-6 sm:mx-10 flex items-center gap-6 sm:gap-10 font-display text-xl sm:text-3xl md:text-4xl font-medium"
           >
             <span className="text-cream/80">{item}</span>
-            <span className="h-1.5 w-1.5 rounded-full bg-gold/40 shrink-0" aria-hidden />
+            <span className="text-gold/50 font-display text-lg sm:text-2xl font-light" aria-hidden>
+              ~
+            </span>
           </span>
         ))}
       </div>
