@@ -30,7 +30,7 @@ const projects = [
     categoryName: "UX & Психология",
     description:
       "Персональный веб-сервис с душевным, минималистичным дизайном, спроектированный для создания атмосферы доверия и удобной онлайн-записи на консультации.",
-    image: "/images/psychology-portfolio.jpg",
+    image: "/webportfolio/images/psychology-portfolio.jpg",
     tags: ["React", "Human UX", "Empathy Design", "Appointment System"],
     highlights: [
       "Тёплая природная гамма, снижающая тревожность посетителя",
@@ -46,7 +46,7 @@ const projects = [
     categoryName: "EdTech & Web App",
     description:
       "Интерактивное веб-приложение, спроектированное с учётом когнитивной нагрузки для комфортного обучения детей и взрослых.",
-    image: "/images/english-nest.jpg",
+    image: "/webportfolio/images/english-nest.jpg",
     tags: ["React", "Next.js", "Cognitive Load UX", "Interactive Learning"],
     highlights: [
       "Минимизирована когнитивная нагрузка при заданиях",
@@ -62,7 +62,7 @@ const projects = [
     categoryName: "E-Commerce & Лендинги",
     description:
       "Современный адаптивный лендинг с фокусом на быструю конверсию и удобство заказа с любого устройства.",
-    image: "/images/pizzavita.jpg",
+    image: "/webportfolio/images/pizzavita.jpg",
     tags: ["Next.js", "Tailwind CSS", "High Conversion", "Responsive"],
     highlights: [
       "Сценарий быстрой сборки заказа",
