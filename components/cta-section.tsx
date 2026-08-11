@@ -155,7 +155,7 @@ function CTASection() {
                     </div>
                     <div className="min-w-0">
                       <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-cream-muted">
-                        Портфолио
+                        Сайт психолога
                       </div>
                       <div className="truncate text-sm font-bold text-cream">
                         {website}
