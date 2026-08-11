@@ -56,7 +56,7 @@ const projects = [
       "Мультиязычность (RU/EN), корзина цифровых товаров и админ-панель управления",
       "Стильный игровой дизайн с безупречной адаптацией под мобильные устройства и ПК",
     ],
-    demoUrl: "https://englishnest.ru",
+    demoUrl: "https://englishnest.vercel.app/",
   },
   {
     id: "project-pizza",
