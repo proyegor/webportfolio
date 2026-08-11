@@ -12,6 +12,7 @@ import {
   Eye,
   ImageOff,
   ArrowUpRight,
+  MousePointerClick,
 } from "lucide-react";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
@@ -30,6 +31,7 @@ const projects = [
     categoryName: "UX & Психология",
     description:
       "Персональный веб-сервис с душевным, минималистичным дизайном, спроектированный для создания атмосферы доверия и удобной онлайн-записи на консультации.",
+    coverImage: "/webportfolio/images/psychology-portfolio-cover.jpg",
     image: "/webportfolio/images/psychology-portfolio.jpg",
     tags: ["React", "Human UX", "Empathy Design", "Appointment System"],
     highlights: [
@@ -46,6 +48,7 @@ const projects = [
     categoryName: "EdTech & Web App",
     description:
       "Интерактивное веб-приложение, спроектированное с учётом когнитивной нагрузки для комфортного обучения детей и взрослых.",
+    coverImage: "/webportfolio/images/english-nest-cover.jpg",
     image: "/webportfolio/images/english-nest.jpg",
     tags: ["React", "Next.js", "Cognitive Load UX", "Interactive Learning"],
     highlights: [
@@ -62,6 +65,7 @@ const projects = [
     categoryName: "E-Commerce & Лендинги",
     description:
       "Современный адаптивный лендинг с фокусом на быструю конверсию и удобство заказа с любого устройства.",
+    coverImage: "/webportfolio/images/pizzavita-cover.jpg",
     image: "/webportfolio/images/pizzavita.jpg",
     tags: ["Next.js", "Tailwind CSS", "High Conversion", "Responsive"],
     highlights: [
@@ -107,7 +111,7 @@ function ProjectImage({ project, onOpen }: { project: Project; onOpen: () => voi
           </div>
         ) : (
           <Image
-            src={project.image}
+            src={project.coverImage || project.image}
             alt={project.title}
             fill
             sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 33vw"
@@ -335,23 +339,31 @@ function ProjectsSection() {
                     {selected.categoryName}
                   </span>
                 </div>
-                <button
-                  type="button"
-                  onClick={() => setSelected(null)}
-                  aria-label="Закрыть"
-                  className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-cream/10 text-cream/70 transition-colors hover:border-gold/40 hover:text-gold-light"
-                >
-                  <X className="h-5 w-5" />
-                </button>
+                <div className="flex items-center gap-3">
+                  <span className="hidden sm:inline-flex items-center gap-1.5 rounded-full border border-gold/20 bg-gold/10 px-3 py-1 text-[11px] font-semibold text-gold-light">
+                    <MousePointerClick className="h-3.5 w-3.5" />
+                    Скролльте скриншот
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() => setSelected(null)}
+                    aria-label="Закрыть"
+                    className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-cream/10 text-cream/70 transition-colors hover:border-gold/40 hover:text-gold-light"
+                  >
+                    <X className="h-5 w-5" />
+                  </button>
+                </div>
               </div>
 
               {/* Image */}
-              <div className="flex items-start justify-center overflow-auto bg-ink-950/60 p-2 sm:p-4">
-                <img
-                  src={selected.image}
-                  alt={selected.title}
-                  className="max-h-[70vh] w-auto max-w-full rounded-2xl object-contain"
-                />
+              <div className="flex-1 overflow-y-auto max-h-[75vh] bg-ink-950/80 p-3 sm:p-6 custom-scrollbar">
+                <div className="mx-auto max-w-4xl">
+                  <img
+                    src={selected.image}
+                    alt={selected.title}
+                    className="w-full h-auto rounded-2xl shadow-2xl border border-cream/10"
+                  />
+                </div>
               </div>
 
               {/* Footer */}
