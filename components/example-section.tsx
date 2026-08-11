@@ -362,7 +362,6 @@ function ProjectsSection() {
                     src={selected.image}
                     alt={selected.title}
                     className="w-full h-auto rounded-2xl shadow-2xl border border-cream/10"
-                    style={{ imageRendering: "crisp-edges" }}
                   />
                 </div>
               </div>
