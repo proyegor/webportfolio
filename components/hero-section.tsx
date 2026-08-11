@@ -208,7 +208,7 @@ export function HeroSection() {
               <div className="relative overflow-hidden rounded-[2rem] border border-cream/10 bg-ink-800 shadow-[0_40px_100px_-40px_rgba(0,0,0,0.9)]">
                 <div className="relative aspect-[4/5]">
                   <Image
-                    src="/webportfolio/images/egor-portrait.jpg"
+                    src="/images/egor-portrait.jpg"
                     alt="Егор Прокопенков — frontend-разработчик"
                     fill
                     priority

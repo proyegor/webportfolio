@@ -31,8 +31,8 @@ const projects = [
     categoryName: "UX & Психология",
     description:
       "Персональный веб-сервис с душевным, минималистичным дизайном, спроектированный для создания атмосферы доверия и удобной онлайн-записи на консультации.",
-    coverImage: "/webportfolio/images/psychology-portfolio-cover.jpg",
-    image: "/webportfolio/images/psychology-portfolio.webp",
+    coverImage: "/images/psychology-portfolio-cover.jpg",
+    image: "/images/psychology-portfolio.webp",
     tags: ["React", "Human UX", "Empathy Design", "Appointment System"],
     highlights: [
       "Тёплая природная гамма, снижающая тревожность посетителя",
@@ -48,8 +48,8 @@ const projects = [
     categoryName: "EdTech & E-Commerce",
     description:
       "Современный интернет-магазин интерактивных учебных материалов для учителей английского языка (дети 5–12 лет).",
-    coverImage: "/webportfolio/images/english-nest-cover.jpg",
-    image: "/webportfolio/images/english-school-full.webp",
+    coverImage: "/images/english-nest-cover.jpg",
+    image: "/images/english-school-full.webp",
     tags: ["React", "Next.js", "Digital E-Commerce", "i18n (RU/EN)", "Admin Panel"],
     highlights: [
       "Быстрый цифровой каталог с мгновенным поиском и удобной фильтрацией по категориям",
@@ -65,8 +65,8 @@ const projects = [
     categoryName: "E-Commerce & Лендинги",
     description:
       "Современный адаптивный лендинг с фокусом на быструю конверсию и удобство заказа с любого устройства.",
-    coverImage: "/webportfolio/images/pizzavita-cover.jpg",
-    image: "/webportfolio/images/pizza-delivery-full.webp",
+    coverImage: "/images/pizzavita-cover.jpg",
+    image: "/images/pizza-delivery-full.webp",
     tags: ["Next.js", "Tailwind CSS", "High Conversion", "Responsive"],
     highlights: [
       "Сценарий быстрой сборки заказа",

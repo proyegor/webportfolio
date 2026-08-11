@@ -31,11 +31,11 @@ export const metadata: Metadata = {
   ],
   icons: {
     icon: [
-      { url: "/webportfolio/favicon.ico", sizes: "any" },
-      { url: "/webportfolio/icon.png", type: "image/png" },
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.png", type: "image/png" },
     ],
-    shortcut: "/webportfolio/favicon.ico",
-    apple: "/webportfolio/apple-touch-icon.png",
+    shortcut: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
   },
   openGraph: {
     title: "Егор Прокопенков — Frontend-разработчик",
