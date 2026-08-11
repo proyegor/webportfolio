@@ -32,7 +32,7 @@ const projects = [
     description:
       "Персональный веб-сервис с душевным, минималистичным дизайном, спроектированный для создания атмосферы доверия и удобной онлайн-записи на консультации.",
     coverImage: "/webportfolio/images/psychology-portfolio-cover.jpg",
-    image: "/webportfolio/images/psychology-portfolio.png",
+    image: "/webportfolio/images/psychology-portfolio.webp",
     tags: ["React", "Human UX", "Empathy Design", "Appointment System"],
     highlights: [
       "Тёплая природная гамма, снижающая тревожность посетителя",
@@ -49,7 +49,7 @@ const projects = [
     description:
       "Интерактивное веб-приложение, спроектированное с учётом когнитивной нагрузки для комфортного обучения детей и взрослых.",
     coverImage: "/webportfolio/images/english-nest-cover.jpg",
-    image: "/webportfolio/images/english-school-full.png",
+    image: "/webportfolio/images/english-school-full.webp",
     tags: ["React", "Next.js", "Cognitive Load UX", "Interactive Learning"],
     highlights: [
       "Минимизирована когнитивная нагрузка при заданиях",
@@ -66,7 +66,7 @@ const projects = [
     description:
       "Современный адаптивный лендинг с фокусом на быструю конверсию и удобство заказа с любого устройства.",
     coverImage: "/webportfolio/images/pizzavita-cover.jpg",
-    image: "/webportfolio/images/pizza-delivery-full.png",
+    image: "/webportfolio/images/pizza-delivery-full.webp",
     tags: ["Next.js", "Tailwind CSS", "High Conversion", "Responsive"],
     highlights: [
       "Сценарий быстрой сборки заказа",
