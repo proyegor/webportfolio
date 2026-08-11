@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import React from "react";
-import { ArrowUp, Heart, Mail } from "lucide-react";
+import { ArrowUp, Heart, Mail, MessageSquare } from "lucide-react";
 
 const NAV_LINKS = [
   { href: "#about", label: "Обо мне" },
@@ -74,13 +74,24 @@ function SiteFooter() {
             <div className="text-[11px] font-bold uppercase tracking-[0.2em] text-cream/50">
               Связаться
             </div>
-            <a
-              href="mailto:dbkuper89@gmail.com"
-              className="mt-4 inline-flex items-center gap-2.5 text-sm font-semibold text-cream transition-colors hover:text-gold-light"
-            >
-              <Mail className="h-4 w-4 text-gold" />
-              dbkuper89@gmail.com
-            </a>
+            <div className="mt-4 flex flex-col gap-2.5">
+              <a
+                href="mailto:dbkuper89@gmail.com"
+                className="inline-flex items-center gap-2.5 text-sm font-semibold text-cream transition-colors hover:text-gold-light"
+              >
+                <Mail className="h-4 w-4 text-gold" />
+                dbkuper89@gmail.com
+              </a>
+              <a
+                href="https://t.me/Yegor_Pro"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2.5 text-sm font-semibold text-cream transition-colors hover:text-gold-light"
+              >
+                <MessageSquare className="h-4 w-4 text-gold" />
+                @Yegor_Pro (Telegram / WhatsApp)
+              </a>
+            </div>
             <p className="mt-3 text-xs leading-relaxed text-cream-dim">
               Открыт для фриланса, сотрудничества и интересных проектов.
             </p>

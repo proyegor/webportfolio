@@ -165,20 +165,28 @@ function CTASection() {
                   <ArrowUpRight className="h-4 w-4 shrink-0 text-gold/60 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-gold" />
                 </a>
 
-                {/* Telegram / phone hint */}
-                <div className="flex items-center gap-3.5 rounded-2xl border border-cream/5 bg-ink-950/40 p-4">
-                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-gold/20 bg-gold/10 text-gold">
-                    <Phone className="h-5 w-5" />
-                  </div>
-                  <div className="min-w-0">
-                    <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-cream-muted">
-                      Telegram / WhatsApp
+                {/* Telegram / WhatsApp */}
+                <a
+                  href="https://t.me/Yegor_Pro"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="group flex items-center justify-between gap-4 rounded-2xl border border-cream/5 bg-ink-950/40 p-4 transition-colors duration-300 hover:border-gold/25"
+                >
+                  <div className="flex min-w-0 items-center gap-3.5">
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-gold/20 bg-gold/10 text-gold">
+                      <MessageSquare className="h-5 w-5" />
                     </div>
-                    <div className="truncate text-sm font-bold text-cream">
-                      Пишите в любом мессенджере
+                    <div className="min-w-0">
+                      <div className="text-[10px] font-bold uppercase tracking-[0.16em] text-cream-muted">
+                        Telegram / WhatsApp
+                      </div>
+                      <div className="truncate text-sm font-bold text-cream">
+                        @Yegor_Pro
+                      </div>
                     </div>
                   </div>
-                </div>
+                  <ArrowUpRight className="h-4 w-4 shrink-0 text-gold/60 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-gold" />
+                </a>
               </motion.div>
             </div>
 
