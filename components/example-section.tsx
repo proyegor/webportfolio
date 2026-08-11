@@ -348,7 +348,7 @@ function ProjectsSection() {
               {/* Image */}
               <div className="flex items-start justify-center overflow-auto bg-ink-950/60 p-2 sm:p-4">
                 <img
-                  src={selected.image}
+                  src={selected.image.startsWith('/') ? `/webportfolio${selected.image}` : selected.image}
                   alt={selected.title}
                   className="max-h-[70vh] w-auto max-w-full rounded-2xl object-contain"
                 />
