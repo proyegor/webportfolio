@@ -76,19 +76,19 @@ function SkillsSection() {
     const approaches = [
         {
             title: "Адаптивность под каждый экран",
-            desc: "Идеальное отображение на телефонах, планшетах, ноутбуках и мониторах — без съехавших блоков, на любом разрешении.",
+            desc: "Сайт одинаково хорошо выглядит и на маленьком телефоне, и на большом мониторе: ничего не съезжает, ничего не приходится листать вбок.",
         },
         {
             title: "Проектирование UX",
-            desc: "Опора на знания психологии для построения интуитивно понятных пользовательских путей.",
+            desc: "Путь пользователя продумываю заранее - от первого экрана до заявки. Всё, что может сбить с шага, убираю ещё на этапе макета.",
         },
         {
-            title: "AI-assisted разработка",
-            desc: "Генеративные нейросети для ускорения кодинга и прототипирования без потери качества.",
+            title: "AI в работе",
+            desc: "Нейросети берут на себя рутину: черновой код, прототипы, повторяющиеся задачи. Мне остаётся то, что требует головы.",
         },
         {
             title: "Производительность",
-            desc: "Оптимизация загрузки, Core Web Vitals и плавность анимаций на слабых устройствах.",
+            desc: "Слежу за скоростью загрузки и за тем, чтобы анимации не тормозили даже на слабых устройствах.",
         },
     ];
 
@@ -109,7 +109,7 @@ function SkillsSection() {
                         </div>
                         <h2 className="mt-5 max-w-xl font-display text-[clamp(2rem,5.5vw,3.75rem)] font-medium leading-tight text-cream">
                             Технологии и{" "}
-                            <em className="text-gold-gradient italic">методология</em>
+                            <em className="text-gold-gradient italic">подход к работе</em>
                         </h2>
                     </motion.div>
 
@@ -120,13 +120,13 @@ function SkillsSection() {
                         transition={{ duration: 0.6, ease: EASE, delay: 0.1 }}
                         className="max-w-md text-sm leading-relaxed text-cream-muted md:text-right sm:text-base"
                     >
-                        Современный веб-стек в комбинации с доказанными принципами
-                        продуктового UX и скоростью нейросетей.
+                        Современный стек, проверенные приёмы UX и нейросети там,
+                        где они реально ускоряют работу.
                     </motion.p>
                 </div>
 
                 <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
-                    {/* ——— Tech stack ——— */}
+                    {/* --- Tech stack --- */}
                     <motion.div
                         initial={{ opacity: 0, y: 32 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -142,7 +142,7 @@ function SkillsSection() {
                                 <h3 className="font-display text-2xl font-semibold text-cream">
                                     Frontend-стек
                                 </h3>
-                                <p className="text-xs text-cream-muted">Основной инструментарий</p>
+                                <p className="text-xs text-cream-muted">С чем работаю каждый день</p>
                             </div>
                         </div>
 
@@ -192,7 +192,7 @@ function SkillsSection() {
                         </ul>
                     </motion.div>
 
-                    {/* ——— Approach ——— */}
+                    {/* --- Approach --- */}
                     <motion.div
                         initial={{ opacity: 0, y: 32 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -208,7 +208,7 @@ function SkillsSection() {
                                 <h3 className="font-display text-2xl font-semibold text-cream">
                                     Мой подход
                                 </h3>
-                                <p className="text-xs text-cream-muted">Принципы создания продуктов</p>
+                                <p className="text-xs text-cream-muted">Как я работаю над проектом</p>
                             </div>
                         </div>
 

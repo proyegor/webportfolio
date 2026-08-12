@@ -44,8 +44,8 @@ function SiteFooter() {
               </div>
             </Link>
             <p className="mt-5 max-w-sm text-sm leading-relaxed text-cream-muted">
-              Интерфейсы, в центре которых — человеческое восприятие.
-              React, Next.js, Tailwind CSS и искренняя забота о пользователе.
+              Делаю сайты на React и Next.js. Стараюсь, чтобы ими было
+              удобно пользоваться, а не только любоваться.
             </p>
           </div>
 
@@ -93,7 +93,7 @@ function SiteFooter() {
               </a>
             </div>
             <p className="mt-3 text-xs leading-relaxed text-cream-dim">
-              Открыт для фриланса, сотрудничества и интересных проектов.
+              Есть задача - пишите, разберёмся.
             </p>
           </div>
         </div>
@@ -114,9 +114,8 @@ function SiteFooter() {
 
           <div className="flex items-center gap-5">
             <p className="flex items-center gap-1.5 text-xs text-cream-dim">
-              Сделано с
+              Сделано вручную, с
               <Heart className="h-3.5 w-3.5 fill-gold text-gold" />
-              к UX
             </p>
             <button
               type="button"

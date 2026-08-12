@@ -18,9 +18,9 @@ const fontSans = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "Егор Прокопенков — Frontend-разработчик",
+  title: "Егор Прокопенков - Frontend-разработчик",
   description:
-    "Портфолио frontend-разработчика Егора Прокопенкова. Отзывчивые веб-интерфейсы на React и Next.js, в основе которых — человеческое восприятие.",
+    "Портфолио frontend-разработчика Егора Прокопенкова. Сайты и веб-интерфейсы на React и Next.js: быстрые, аккуратные и удобные для пользователя.",
   keywords: [
     "frontend разработчик",
     "веб-разработка",
@@ -38,9 +38,9 @@ export const metadata: Metadata = {
     apple: "/apple-touch-icon.png",
   },
   openGraph: {
-    title: "Егор Прокопенков — Frontend-разработчик",
+    title: "Егор Прокопенков - Frontend-разработчик",
     description:
-      "Интерфейсы, в центре которых — человеческое восприятие. React, Next.js, Tailwind CSS.",
+      "Сайты на React и Next.js, которыми удобно пользоваться. Портфолио фронтенд-разработчика с психологическим подходом к UX.",
     type: "website",
   },
 };

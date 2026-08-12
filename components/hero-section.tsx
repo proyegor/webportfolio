@@ -65,7 +65,7 @@ export function HeroSection() {
 
   const stats = [
     { value: 10, suffix: "+", label: "лет в психологии и UX" },
-    { value: 30, suffix: "+", label: "реализованных интерфейсов" },
+    { value: 30, suffix: "+", label: "запущенных проектов" },
     { value: 100, suffix: "%", label: "адаптивность под все экраны" },
   ];
 
@@ -87,7 +87,7 @@ export function HeroSection() {
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 items-center gap-14 lg:grid-cols-12 lg:gap-8">
-          {/* ——— Left: text ——— */}
+          {/* --- Left: text --- */}
           <motion.div
             style={{ y: textY, opacity: fade }}
             className="relative z-10 flex flex-col items-start lg:col-span-7"
@@ -143,10 +143,10 @@ export function HeroSection() {
               transition={{ duration: 0.7, ease: EASE, delay: 0.4 }}
               className="mt-6 max-w-xl text-[15px] leading-relaxed text-cream-muted sm:text-lg"
             >
-              Я&nbsp;— Егор. Создаю отзывчивые, быстрые и&nbsp;продуманные
-              веб-интерфейсы на&nbsp;React и&nbsp;Next.js. 10&nbsp;лет опыта
-              в&nbsp;психологии помогают мне делать UX, который людям
-              действительно комфортен.
+              Я&nbsp;- Егор. Делаю сайты на&nbsp;React и&nbsp;Next.js:
+              быстрые, аккуратные, без лишнего. А&nbsp;десять лет
+              в&nbsp;психологии помогают смотреть на&nbsp;интерфейс глазами
+              обычного человека, а&nbsp;не&nbsp;разработчика.
             </motion.p>
 
             {/* CTAs */}
@@ -193,7 +193,7 @@ export function HeroSection() {
             </motion.div>
           </motion.div>
 
-          {/* ——— Right: portrait ——— */}
+          {/* --- Right: portrait --- */}
           <motion.div
             initial={{ opacity: 0, scale: 0.92, y: 30 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -208,7 +208,7 @@ export function HeroSection() {
                 <div className="relative aspect-[4/5]">
                   <Image
                     src="/images/egor-portrait.jpg"
-                    alt="Егор Прокопенков — frontend-разработчик"
+                    alt="Егор Прокопенков - frontend-разработчик"
                     fill
                     priority
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 40vw"
@@ -224,7 +224,7 @@ export function HeroSection() {
                     Егор Прокопенков
                   </div>
                   <p className="mt-2 font-display text-sm italic leading-snug text-cream/90 sm:text-base">
-                    «Интерфейсы, в&nbsp;центре которых&nbsp;— человеческое восприятие»
+                    «Хороший интерфейс не&nbsp;замечаешь - им просто пользуешься»
                   </p>
                 </div>
               </div>

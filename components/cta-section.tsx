@@ -17,7 +17,7 @@ import confetti from "canvas-confetti";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
-// Ключ доступа к Web3Forms (https://web3forms.com) — привязан к почте владельца сайта
+// Ключ доступа к Web3Forms (https://web3forms.com) - привязан к почте владельца сайта
 const WEB3FORMS_ACCESS_KEY = "678561c0-8740-4b1c-9dea-cc85b8ce5fda";
 
 function CTASection() {
@@ -44,7 +44,7 @@ function CTASection() {
     setIsSubmitting(true);
     setSubmitError(false);
 
-    // Если контакт похож на email — используем его для ответа, иначе встраиваем в текст
+    // Если контакт похож на email - используем его для ответа, иначе встраиваем в текст
     const isEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contact.trim());
 
     try {
@@ -113,7 +113,7 @@ function CTASection() {
           />
 
           <div className="relative grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-10">
-            {/* ——— Left: text + contacts ——— */}
+            {/* --- Left: text + contacts --- */}
             <div className="flex flex-col items-start lg:col-span-6">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -133,9 +133,8 @@ function CTASection() {
                 transition={{ duration: 0.7, ease: EASE, delay: 0.08 }}
                 className="mt-5 font-display text-[clamp(2rem,5vw,3.4rem)] font-medium leading-tight text-cream"
               >
-                Готовы создать что-то{" "}
-                <em className="text-gold-gradient italic">удобное</em> и{" "}
-                <em className="text-gold-gradient italic">технологичное</em>?
+                Есть задача или идея?{" "}
+                Давайте <em className="text-gold-gradient italic">обсудим</em> её.
               </motion.h2>
 
               <motion.p
@@ -145,9 +144,9 @@ function CTASection() {
                 transition={{ duration: 0.7, ease: EASE, delay: 0.16 }}
                 className="mt-6 max-w-lg text-sm leading-relaxed text-cream-muted sm:text-base"
               >
-                Открыт к сотрудничеству, фриланс-проектам и новым вызовам.
-                Давайте обсудим вашу идею и создадим интерфейс, который
-                растопит сердца пользователей.
+                Беру фриланс-проекты и доработку существующих сайтов.
+                Напишите пару слов о задаче - вместе прикинем,
+                как её решить.
               </motion.p>
 
               {/* Contact cards */}
@@ -238,7 +237,7 @@ function CTASection() {
               </motion.div>
             </div>
 
-            {/* ——— Right: form ——— */}
+            {/* --- Right: form --- */}
             <motion.div
               initial={{ opacity: 0, y: 32 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -251,7 +250,7 @@ function CTASection() {
                   Отправить сообщение
                 </h3>
                 <p className="mt-1.5 text-xs text-cream-muted">
-                  Заполните форму — я отвечу в течение нескольких часов.
+                  Заполните форму - я отвечу в течение нескольких часов.
                 </p>
 
                 <AnimatePresence mode="wait">
@@ -269,7 +268,7 @@ function CTASection() {
                         Спасибо за обращение!
                       </div>
                       <p className="max-w-xs text-xs leading-relaxed text-cream-muted">
-                        Ваше сообщение отправлено. Совсем скоро я свяжусь с вами.
+                        Сообщение отправлено. Отвечу в ближайшее время.
                       </p>
                     </motion.div>
                   ) : (
@@ -336,7 +335,7 @@ function CTASection() {
                         />
                       </div>
 
-                      {/* Honeypot для антиспама (Web3Forms): люди его не заполняют, боты — да */}
+                      {/* Honeypot для антиспама (Web3Forms): люди его не заполняют, боты - да */}
                       <input
                         type="checkbox"
                         name="botcheck"
