@@ -66,8 +66,8 @@ function SiteHeader() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         className={`transition-all duration-500 ${scrolled
-            ? "bg-ink-950/80 backdrop-blur-xl border-b border-cream/5 shadow-[0_10px_40px_-20px_rgba(0,0,0,0.8)]"
-            : "bg-transparent border-b border-transparent"
+          ? "bg-ink-950/80 backdrop-blur-xl border-b border-cream/5 shadow-[0_10px_40px_-20px_rgba(0,0,0,0.8)]"
+          : "bg-transparent border-b border-transparent"
           }`}
       >
         <nav className="mx-auto flex h-16 sm:h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
@@ -113,16 +113,8 @@ function SiteHeader() {
             })}
           </div>
 
-          {/* CTA + mobile toggle */}
+          {/* Mobile toggle */}
           <div className="flex items-center gap-3">
-            <Link
-              href="#contact"
-              className="btn-gold hidden sm:inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-[13px] font-bold"
-            >
-              Обсудить проект
-              <ArrowUpRight className="h-4 w-4" />
-            </Link>
-
             <button
               type="button"
               onClick={() => setIsMenuOpen((v) => !v)}

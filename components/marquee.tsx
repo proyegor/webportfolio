@@ -3,16 +3,14 @@
 import React from "react";
 
 const ITEMS = [
-  "Frontend",
   "React",
   "Next.js",
   "TypeScript",
-  "UX Design",
   "Tailwind CSS",
+  "UX Design",
+  "Framer Motion",
   "Адаптивность",
   "Производительность",
-  "Framer Motion",
-  "Внимание к деталям",
 ];
 
 function Marquee() {
@@ -30,7 +28,9 @@ function Marquee() {
             key={i}
             className="mx-6 sm:mx-10 flex items-center gap-6 sm:gap-10 font-display text-xl sm:text-3xl md:text-4xl font-medium"
           >
-            <span className="text-cream/80">{item}</span>
+            <span className={i % 2 === 0 ? "text-cream/80" : "text-outline"}>
+              {item}
+            </span>
             <span className="text-gold/50 font-display text-lg sm:text-2xl font-light" aria-hidden>
               ~
             </span>

@@ -65,12 +65,12 @@ function FramerIcon({ className = "h-5 w-5" }: { className?: string }) {
 
 function SkillsSection() {
     const techStack = [
-        { name: "React", tag: "UI Framework", pct: 96, icon: ReactIcon },
-        { name: "Next.js (App Router)", tag: "SSR & Architecture", pct: 94, icon: NextjsIcon },
-        { name: "TypeScript / JavaScript", tag: "Type Safety", pct: 92, icon: TypescriptIcon },
-        { name: "Tailwind CSS", tag: "Design Systems", pct: 98, icon: TailwindIcon },
-        { name: "HTML5 / Modern CSS", tag: "Semantic Web", pct: 98, icon: HtmlCssIcon },
-        { name: "Framer Motion", tag: "Animations", pct: 90, icon: FramerIcon },
+        { name: "React", tag: "UI Framework", level: 10, icon: ReactIcon },
+        { name: "Next.js (App Router)", tag: "SSR & Architecture", level: 9, icon: NextjsIcon },
+        { name: "TypeScript / JavaScript", tag: "Type Safety", level: 9, icon: TypescriptIcon },
+        { name: "Tailwind CSS", tag: "Design Systems", level: 10, icon: TailwindIcon },
+        { name: "HTML5 / Modern CSS", tag: "Semantic Web", level: 10, icon: HtmlCssIcon },
+        { name: "Framer Motion", tag: "Animations", level: 9, icon: FramerIcon },
     ];
 
     const approaches = [
@@ -165,23 +165,25 @@ function SkillsSection() {
                                                 <span className="truncate text-xs font-bold text-cream sm:text-sm">
                                                     {tech.name}
                                                 </span>
-                                                <div className="flex items-center gap-1.5 shrink-0">
-                                                    <span className="rounded-md border border-gold/15 bg-gold/5 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wider text-gold-light/90">
-                                                        {tech.tag}
-                                                    </span>
-                                                    <span className="text-[11px] font-mono font-bold text-gold">
-                                                        {tech.pct}%
-                                                    </span>
-                                                </div>
+                                                <span className="shrink-0 rounded-md border border-gold/15 bg-gold/5 px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wider text-gold-light/90">
+                                                    {tech.tag}
+                                                </span>
                                             </div>
-                                            <div className="mt-2.5 h-1 overflow-hidden rounded-full bg-cream/5">
-                                                <motion.div
-                                                    initial={{ width: 0 }}
-                                                    whileInView={{ width: `${tech.pct}%` }}
-                                                    viewport={{ once: true, margin: "-40px" }}
-                                                    transition={{ duration: 1.1, ease: EASE, delay: 0.2 + idx * 0.06 }}
-                                                    className="h-full rounded-full bg-gradient-to-r from-gold-dark via-gold to-gold-light shadow-[0_0_10px_rgba(201,161,94,0.4)]"
-                                                />
+                                            {/* Сегментная шкала уровня вместо псевдоточных процентов */}
+                                            <div className="mt-2.5 flex items-center gap-1">
+                                                {Array.from({ length: 10 }).map((_, seg) => (
+                                                    <motion.span
+                                                        key={seg}
+                                                        initial={{ opacity: 0.18 }}
+                                                        whileInView={{ opacity: seg < tech.level ? 1 : 0.18 }}
+                                                        viewport={{ once: true, margin: "-40px" }}
+                                                        transition={{ duration: 0.4, delay: 0.25 + idx * 0.06 + seg * 0.045 }}
+                                                        className={`h-1 flex-1 rounded-full ${seg < tech.level
+                                                            ? "bg-gradient-to-r from-gold-dark via-gold to-gold-light"
+                                                            : "bg-cream/10"
+                                                            }`}
+                                                    />
+                                                ))}
                                             </div>
                                         </div>
                                     </div>

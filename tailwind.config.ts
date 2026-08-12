@@ -99,7 +99,7 @@ const config = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "marquee": "marquee 32s linear infinite",
+        "marquee": "marquee 44s linear infinite",
         "shine": "shine 2.8s ease-in-out infinite",
         "float-y": "float-y 5s ease-in-out infinite",
         "pulse-glow": "pulse-glow 7s ease-in-out infinite",

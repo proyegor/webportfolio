@@ -11,7 +11,7 @@ import {
 } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Brain, Sparkles, Code2, HeartHandshake, ShieldCheck, RotateCw } from "lucide-react";
+import { ArrowRight, Brain, Sparkles, Code2, HeartHandshake } from "lucide-react";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
@@ -203,7 +203,6 @@ export function HeroSection() {
             <motion.div style={{ y: portraitY, rotate: portraitRotate }} className="relative">
               {/* Gold frame */}
               <div className="absolute -inset-3 rounded-[2.5rem] border border-gold/20 sm:-inset-4" />
-              <div className="absolute -inset-3 rounded-[2.5rem] bg-gold/5 blur-2xl sm:-inset-4" />
 
               <div className="relative overflow-hidden rounded-[2rem] border border-cream/10 bg-ink-800 shadow-[0_40px_100px_-40px_rgba(0,0,0,0.9)]">
                 <div className="relative aspect-[4/5]">
@@ -229,27 +228,6 @@ export function HeroSection() {
                   </p>
                 </div>
               </div>
-
-              {/* Rotating badge */}
-              <motion.div
-                className="absolute -right-5 -top-5 hidden sm:flex sm:h-24 sm:w-24 lg:h-28 lg:w-28"
-                animate={{ rotate: 360 }}
-                transition={{ repeat: Infinity, duration: 22, ease: "linear" }}
-              >
-                <div className="relative h-full w-full">
-                  <svg viewBox="0 0 100 100" className="h-full w-full">
-                    <defs>
-                      <path id="circlePath" d="M 50,50 m -36,0 a 36,36 0 1,1 72,0 a 36,36 0 1,1 -72,0" />
-                    </defs>
-                    <text className="fill-gold/80 text-[9.5px] font-semibold uppercase tracking-[0.18em]">
-                      <textPath href="#circlePath">Открыт к проектам · Frontend · </textPath>
-                    </text>
-                  </svg>
-                  <span className="absolute inset-0 flex items-center justify-center">
-                    <RotateCw className="h-5 w-5 text-gold" />
-                  </span>
-                </div>
-              </motion.div>
 
               {/* Floating badge: clean code */}
               <motion.div
@@ -279,16 +257,6 @@ export function HeroSection() {
                   <div className="text-xs font-bold text-cream">UX-эмпатия</div>
                   <div className="text-[10px] text-cream-muted">10 лет в психологии</div>
                 </div>
-              </motion.div>
-
-              {/* Floating badge: 100% responsive */}
-              <motion.div
-                className="glass absolute -bottom-5 left-8 flex items-center gap-2.5 rounded-2xl px-4 py-2.5 shadow-xl"
-                animate={{ y: [0, -6, 0] }}
-                transition={{ repeat: Infinity, duration: 4.6, ease: "easeInOut", delay: 1.6 }}
-              >
-                <ShieldCheck className="h-4 w-4 text-gold" />
-                <span className="text-xs font-bold text-cream">Адаптивность 100%</span>
               </motion.div>
             </motion.div>
           </motion.div>
