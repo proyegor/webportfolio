@@ -73,7 +73,7 @@ const projects = [
       "Высокая скорость загрузки изображений",
       "Оптимизирован под тач-интерфейсы",
     ],
-    demoUrl: "https://pizzavita.demo",
+    demoUrl: "https://pizza-vita.vercel.app/",
   },
 ];
 
@@ -358,6 +358,7 @@ function ProjectsSection() {
               {/* Image */}
               <div className="flex-1 overflow-y-auto max-h-[75vh] bg-ink-950/80 p-3 sm:p-6 custom-scrollbar">
                 <div className="mx-auto max-w-4xl">
+                  {/* eslint-disable-next-line @next/next/no-img-element -- лайтбокс с полноразмерным скриншотом, у next/image нет фиксированных размеров, а оптимизация отключена (output: export) */}
                   <img
                     src={selected.image}
                     alt={selected.title}

@@ -10,20 +10,21 @@ import {
   Sparkles,
   MessageSquare,
   ArrowUpRight,
-  Phone,
+  AlertTriangle,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import confetti from "canvas-confetti";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
-const TELEGRAM_BOT_TOKEN = "8928885840:AAEq4UB6Pm_AYfIC6ZWGgLgKs4hamfgadQA";
-const TELEGRAM_CHAT_ID = "403491786";
+// Ключ доступа к Web3Forms (https://web3forms.com) — привязан к почте владельца сайта
+const WEB3FORMS_ACCESS_KEY = "678561c0-8740-4b1c-9dea-cc85b8ce5fda";
 
 function CTASection() {
   const [copied, setCopied] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState(false);
 
   const [name, setName] = useState("");
   const [contact, setContact] = useState("");
@@ -41,41 +42,52 @@ function CTASection() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitError(false);
 
-    const telegramText = `📬 <b>Новая заявка с сайта-портфолио!</b>\n\n<b>👤 Имя:</b> ${name}\n<b>💬 Контакт:</b> ${contact}\n<b>📝 Детали проекта:</b>\n${message}`;
+    // Если контакт похож на email — используем его для ответа, иначе встраиваем в текст
+    const isEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contact.trim());
 
     try {
-      const formData = new FormData();
-      formData.append("chat_id", TELEGRAM_CHAT_ID);
-      formData.append("text", telegramText);
-      formData.append("parse_mode", "HTML");
-
-      await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+      const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        body: formData,
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          subject: `Новая заявка с сайта: ${name}`,
+          name,
+          email: isEmail ? contact.trim() : email,
+          message: isEmail
+            ? message
+            : `Контакт: ${contact}\n\n${message}`,
+          botcheck: "",
+        }),
       });
-    } catch (err) {
-      console.warn("Direct fetch failed, attempting proxy...", err);
-      try {
-        const rawUrl = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage?chat_id=${TELEGRAM_CHAT_ID}&text=${encodeURIComponent(telegramText)}&parse_mode=HTML`;
-        await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(rawUrl)}`);
-      } catch (proxyErr) {
-        console.error("Proxy fetch failed:", proxyErr);
+      const data = await res.json();
+      if (!data.success) {
+        throw new Error(data.message || "Web3Forms error");
       }
-    } finally {
+    } catch (err) {
+      console.error("Failed to send message:", err);
+      setSubmitError(true);
       setIsSubmitting(false);
-      setFormSubmitted(true);
-      setName("");
-      setContact("");
-      setMessage("");
-      confetti({
-        particleCount: 90,
-        spread: 75,
-        origin: { y: 0.6 },
-        colors: ["#C9A15E", "#E3C88F", "#EFE9DE", "#8A6A35"],
-      });
-      setTimeout(() => setFormSubmitted(false), 6000);
+      return;
     }
+
+    setIsSubmitting(false);
+    setFormSubmitted(true);
+    setName("");
+    setContact("");
+    setMessage("");
+    confetti({
+      particleCount: 90,
+      spread: 75,
+      origin: { y: 0.6 },
+      colors: ["#C9A15E", "#E3C88F", "#EFE9DE", "#8A6A35"],
+    });
+    setTimeout(() => setFormSubmitted(false), 6000);
   };
 
   return (
@@ -323,6 +335,42 @@ function CTASection() {
                           className="w-full resize-none rounded-xl border border-cream/10 bg-ink-900/80 px-4 py-3 text-sm text-cream placeholder:text-cream-dim focus:border-gold/50 focus:outline-none focus:ring-1 focus:ring-gold/40"
                         />
                       </div>
+
+                      {/* Honeypot для антиспама (Web3Forms): люди его не заполняют, боты — да */}
+                      <input
+                        type="checkbox"
+                        name="botcheck"
+                        className="hidden"
+                        style={{ display: "none" }}
+                        tabIndex={-1}
+                        autoComplete="off"
+                      />
+
+                      {submitError && (
+                        <div className="flex items-start gap-2.5 rounded-2xl border border-red-400/25 bg-red-400/10 px-4 py-3 text-xs leading-relaxed text-red-200">
+                          <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-red-300" />
+                          <span>
+                            Не удалось отправить сообщение. Напишите мне
+                            напрямую:{" "}
+                            <a
+                              href={`mailto:${email}`}
+                              className="font-bold underline decoration-gold/50 underline-offset-2 hover:text-gold-light"
+                            >
+                              {email}
+                            </a>{" "}
+                            или в Telegram{" "}
+                            <a
+                              href="https://t.me/Yegor_Pro"
+                              target="_blank"
+                              rel="noreferrer"
+                              className="font-bold underline decoration-gold/50 underline-offset-2 hover:text-gold-light"
+                            >
+                              @Yegor_Pro
+                            </a>
+                            .
+                          </span>
+                        </div>
+                      )}
 
                       <button
                         type="submit"

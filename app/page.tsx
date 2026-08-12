@@ -1,5 +1,6 @@
 "use client";
 
+import { MotionConfig } from "framer-motion";
 import SiteHeader from "@/components/site-header";
 import { HeroSection } from "@/components/hero-section";
 import Marquee from "@/components/marquee";
@@ -11,32 +12,34 @@ import SiteFooter from "@/components/site-footer";
 
 export default function Component() {
   return (
-    <div className="min-h-screen bg-ink-950 text-cream font-sans selection:bg-gold/30 selection:text-cream">
-      {/* Navigation */}
-      <SiteHeader />
+    <MotionConfig reducedMotion="user">
+      <div className="min-h-screen bg-ink-950 text-cream font-sans selection:bg-gold/30 selection:text-cream">
+        {/* Navigation */}
+        <SiteHeader />
 
-      <main>
-        {/* Hero */}
-        <HeroSection />
+        <main>
+          {/* Hero */}
+          <HeroSection />
 
-        {/* Marquee strip */}
-        <Marquee />
+          {/* Marquee strip */}
+          <Marquee />
 
-        {/* About */}
-        <FeaturesSection />
+          {/* About */}
+          <FeaturesSection />
 
-        {/* Skills */}
-        <SkillsSection />
+          {/* Skills */}
+          <SkillsSection />
 
-        {/* Projects */}
-        <ProjectsSection />
+          {/* Projects */}
+          <ProjectsSection />
 
-        {/* Contact */}
-        <CTASection />
-      </main>
+          {/* Contact */}
+          <CTASection />
+        </main>
 
-      {/* Footer */}
-      <SiteFooter />
-    </div>
+        {/* Footer */}
+        <SiteFooter />
+      </div>
+    </MotionConfig>
   );
 }

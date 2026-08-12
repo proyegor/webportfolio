@@ -5,14 +5,14 @@ import "./globals.css";
 const fontDisplay = Playfair_Display({
   subsets: ["cyrillic", "latin"],
   style: ["normal", "italic"],
-  weight: ["400", "500", "600", "700", "800", "900"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-display",
   display: "swap",
 });
 
 const fontSans = Manrope({
   subsets: ["cyrillic", "latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-sans",
   display: "swap",
 });
