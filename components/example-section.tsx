@@ -16,6 +16,7 @@ import {
   FileDown,
   ChevronLeft,
   ChevronRight,
+  ChevronDown,
   Sparkles,
   Globe,
 } from "lucide-react";
@@ -36,12 +37,12 @@ function TelegramIcon({ className = "h-4 w-4" }: { className?: string }) {
 const projects = [
   {
     id: "project-quickbook",
-    title: "QuickBook — SaaS-платформа и Telegram Mini App",
+    title: "QuickBook — SaaS & Telegram Mini App",
     category: "telegram",
-    categoryName: "Telegram Apps & SaaS",
-    badge: "Флагманский SaaS проект",
+    categoryName: "Telegram & SaaS",
+    badge: "Флагманский SaaS",
     description:
-      "Мультиарендная (Multi-tenant) система онлайн-записи и управления клиентами для мастеров и салонов прямо в Telegram и в браузере. Интерактивный календарь слотов, PostgreSQL + Supabase (RLS), Cron-напоминания и прием оплат.",
+      "Мультиарендная платформа для онлайн-записи клиентов в Telegram и веб. Интерактивные слоты, Supabase PostgreSQL, Cron-напоминания и прием оплат.",
     coverImage: "/images/quickbook/slide-1.webp",
     image: "/images/quickbook/slide-1.webp",
     slides: [
@@ -59,13 +60,12 @@ const projects = [
       "TypeScript",
       "Supabase / PostgreSQL",
       "Cron Automation",
-      "Crypto Pay & Stars",
     ],
     highlights: [
-      "Запись клиентов в 3 клика в Telegram и веб-версии без внешних сайтов",
-      "Атомарные SQL-транзакции (book_slot_atomic) и 100% защита от овербукинга",
-      "Автоматические напоминания о визитах за 24 ч и 1 ч через Telegram Cron",
-      "Личный кабинет мастера: график работы, управление услугами и СБП-оплата",
+      "Запись в 3 клика в Telegram и веб-версии",
+      "Атомарные SQL-транзакции и защита от овербукинга",
+      "Автонапоминания клиентам за 24 ч и 1 ч в Telegram",
+      "Личный кабинет мастера: график, услуги и СБП",
     ],
     webUrl: "https://quickbook24.vercel.app/",
     telegramUrl: "https://t.me/quickbook_app_bot",
@@ -171,7 +171,7 @@ function ProjectImage({ project, onOpen }: { project: Project; onOpen: () => voi
             src={project.coverImage || project.image}
             alt={project.title}
             fill
-            sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 33vw"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             className="object-cover object-top transition-transform duration-700 [transition-timing-function:cubic-bezier(0.16,1,0.3,1)] group-hover/img:scale-[1.06]"
             onError={() => setFailed(true)}
           />
@@ -181,23 +181,23 @@ function ProjectImage({ project, onOpen }: { project: Project; onOpen: () => voi
         <div className="absolute inset-0 bg-gradient-to-t from-ink-950/85 via-ink-950/10 to-transparent opacity-60 transition-opacity duration-500 group-hover/img:opacity-90" />
 
         {/* category & badge */}
-        <div className="absolute left-4 top-4 flex flex-wrap gap-2">
-          <span className="rounded-full border border-cream/10 bg-ink-950/70 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-gold-light backdrop-blur-md">
+        <div className="absolute left-3.5 top-3.5 flex flex-wrap gap-1.5">
+          <span className="rounded-full border border-cream/10 bg-ink-950/75 px-2.5 py-0.5 text-[9px] font-bold uppercase tracking-[0.12em] text-gold-light backdrop-blur-md">
             {project.categoryName}
           </span>
           {"badge" in project && project.badge && (
-            <span className="hidden sm:inline-flex items-center gap-1 rounded-full border border-gold/30 bg-gold/15 px-2.5 py-1 text-[10px] font-bold text-gold-light backdrop-blur-md shadow-gold-sm">
-              <Sparkles className="h-3 w-3" />
+            <span className="inline-flex items-center gap-1 rounded-full border border-gold/30 bg-gold/15 px-2 py-0.5 text-[9px] font-bold text-gold-light backdrop-blur-md shadow-gold-sm">
+              <Sparkles className="h-2.5 w-2.5" />
               {project.badge}
             </span>
           )}
         </div>
 
         {/* view hint */}
-        <div className="absolute inset-x-4 bottom-4 flex translate-y-2 items-center justify-between opacity-0 transition-all duration-500 group-hover/img:translate-y-0 group-hover/img:opacity-100">
-          <span className="flex items-center gap-2 rounded-full bg-gold px-4 py-2 text-xs font-bold text-ink-950 shadow-gold-sm">
-            <Maximize2 className="h-3.5 w-3.5" />
-            {"slides" in project && project.slides ? "Смотреть презентацию" : "Смотреть скриншот"}
+        <div className="absolute inset-x-3 bottom-3 flex translate-y-2 items-center justify-between opacity-0 transition-all duration-500 group-hover/img:translate-y-0 group-hover/img:opacity-100">
+          <span className="flex items-center gap-1.5 rounded-full bg-gold px-3.5 py-1.5 text-[11px] font-bold text-ink-950 shadow-gold-sm">
+            <Maximize2 className="h-3 w-3" />
+            {"slides" in project && project.slides ? "Смотреть слайды" : "Смотреть скриншот"}
           </span>
         </div>
       </div>
@@ -209,13 +209,20 @@ function ProjectsSection() {
   const [selected, setSelected] = useState<Project | null>(null);
   const [slideIndex, setSlideIndex] = useState(0);
   const [activeCategory, setActiveCategory] = useState("all");
+  const [isExpanded, setIsExpanded] = useState(false);
 
   const filtered =
     activeCategory === "all"
       ? projects
       : projects.filter((p) => p.category === activeCategory);
 
-  // Close lightbox with Escape
+  // When 'all' is selected and not expanded, show top 3 projects (1 row of 3 columns)
+  const displayedProjects =
+    activeCategory === "all" && !isExpanded
+      ? filtered.slice(0, 3)
+      : filtered;
+
+  // Close lightbox with Escape / arrow keys
   useEffect(() => {
     if (!selected) return;
     const onKey = (e: KeyboardEvent) => {
@@ -297,7 +304,10 @@ function ProjectsSection() {
               <button
                 key={tab.id}
                 type="button"
-                onClick={() => setActiveCategory(tab.id)}
+                onClick={() => {
+                  setActiveCategory(tab.id);
+                  setIsExpanded(false);
+                }}
                 className={`relative shrink-0 rounded-full px-5 py-2.5 text-xs font-bold transition-colors duration-300 ${
                   isActive
                     ? "text-ink-950"
@@ -317,89 +327,114 @@ function ProjectsSection() {
           })}
         </motion.div>
 
-        {/* Cards */}
-        <motion.div layout className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+        {/* 3-Column Cards Grid */}
+        <motion.div layout className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           <AnimatePresence mode="popLayout">
-            {filtered.map((project, idx) => (
+            {displayedProjects.map((project, idx) => (
               <motion.article
                 key={project.id}
                 layout
                 initial={{ opacity: 0, y: 32, scale: 0.97 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.5, ease: EASE, delay: idx * 0.06 }}
+                transition={{ duration: 0.5, ease: EASE, delay: idx * 0.05 }}
                 className={`card-premium group flex flex-col overflow-hidden rounded-[1.5rem] ${
                   project.id === "project-quickbook"
-                    ? "border-gold/30 shadow-[0_20px_50px_-20px_rgba(201,161,94,0.2)] md:col-span-2 xl:col-span-1"
+                    ? "border-gold/30 shadow-[0_20px_50px_-20px_rgba(201,161,94,0.2)]"
                     : ""
                 }`}
               >
                 <ProjectImage project={project} onOpen={() => openLightbox(project)} />
 
-                <div className="flex flex-1 flex-col p-6 sm:p-7">
-                  <div className="flex items-start justify-between gap-3">
-                    <h3 className="font-display text-[1.35rem] font-semibold leading-snug text-cream transition-colors duration-300 group-hover:text-gold-light">
-                      {project.title}
-                    </h3>
-                  </div>
+                <div className="flex flex-1 flex-col p-6">
+                  <h3 className="font-display text-[1.25rem] font-semibold leading-snug text-cream transition-colors duration-300 group-hover:text-gold-light">
+                    {project.title}
+                  </h3>
 
-                  <p className="mt-3 text-sm leading-relaxed text-cream-muted">
+                  <p className="mt-2.5 text-xs leading-relaxed text-cream-muted sm:text-sm">
                     {project.description}
                   </p>
 
-                  <ul className="mt-5 space-y-2">
+                  <ul className="mt-4 space-y-1.5">
                     {project.highlights.map((item, i) => (
                       <li key={i} className="flex items-start gap-2 text-xs text-cream/75">
                         <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-gold" />
-                        <span>{item}</span>
+                        <span className="leading-snug">{item}</span>
                       </li>
                     ))}
                   </ul>
 
-                  <div className="mt-5 flex flex-wrap gap-1.5 border-t border-cream/5 pt-5">
+                  <div className="mt-4 flex flex-wrap gap-1.5 border-t border-cream/5 pt-4">
                     {project.tags.map((tag, tIdx) => (
                       <span
                         key={tIdx}
-                        className="rounded-full border border-gold/15 bg-gold/5 px-2.5 py-1 text-[10px] font-semibold text-gold-light/90"
+                        className="rounded-full border border-gold/15 bg-gold/5 px-2 py-0.5 text-[9px] font-semibold text-gold-light/90"
                       >
                         {tag}
                       </span>
                     ))}
                   </div>
 
-                  <div className="mt-auto flex flex-wrap items-center gap-2 pt-6">
-                    <button
-                      type="button"
-                      onClick={() => openLightbox(project)}
-                      className="btn-ghost inline-flex flex-1 min-w-[100px] items-center justify-center gap-1.5 rounded-full px-3 py-2.5 text-xs font-bold text-cream"
-                    >
-                      <Eye className="h-3.5 w-3.5" />
-                      {"slides" in project && project.slides ? "Слайды" : "Скриншот"}
-                    </button>
-
-                    {"telegramUrl" in project && project.telegramUrl && (
-                      <a
-                        href={project.telegramUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="inline-flex flex-1 min-w-[120px] items-center justify-center gap-1.5 rounded-full bg-[#2AABEE] px-3 py-2.5 text-xs font-bold text-white transition-all hover:bg-[#229ED9] shadow-[0_0_20px_-6px_rgba(42,171,238,0.5)]"
-                      >
-                        <TelegramIcon className="h-3.5 w-3.5" />
-                        Бот в Telegram
-                      </a>
-                    )}
-
-                    {project.demoUrl && (
-                      <a
-                        href={project.demoUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="btn-gold group/btn inline-flex flex-1 min-w-[110px] items-center justify-center gap-1.5 rounded-full px-3 py-2.5 text-xs font-bold"
-                      >
-                        {"webUrl" in project ? <Globe className="h-3.5 w-3.5" /> : null}
-                        {project.demoLabel || "Открыть сайт"}
-                        <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
-                      </a>
+                  {/* Actions */}
+                  <div className="mt-auto pt-5">
+                    {"telegramUrl" in project && project.telegramUrl ? (
+                      /* QuickBook buttons: 2 rows for optimal alignment */
+                      <div className="flex flex-col gap-2">
+                        <div className="grid grid-cols-2 gap-2">
+                          <button
+                            type="button"
+                            onClick={() => openLightbox(project)}
+                            className="btn-ghost inline-flex items-center justify-center gap-1.5 rounded-full px-3 py-2 text-xs font-bold text-cream"
+                          >
+                            <Eye className="h-3.5 w-3.5" />
+                            Слайды
+                          </button>
+                          <a
+                            href={project.telegramUrl}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="inline-flex items-center justify-center gap-1.5 rounded-full bg-[#2AABEE] px-3 py-2 text-xs font-bold text-white transition-all hover:bg-[#229ED9] shadow-[0_0_20px_-6px_rgba(42,171,238,0.5)]"
+                          >
+                            <TelegramIcon className="h-3.5 w-3.5" />
+                            Бот
+                          </a>
+                        </div>
+                        {project.demoUrl && (
+                          <a
+                            href={project.demoUrl}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="btn-gold group/btn inline-flex w-full items-center justify-center gap-1.5 rounded-full px-3 py-2 text-xs font-bold"
+                          >
+                            <Globe className="h-3.5 w-3.5" />
+                            {project.demoLabel || "Веб-версия"}
+                            <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
+                          </a>
+                        )}
+                      </div>
+                    ) : (
+                      /* Standard project buttons */
+                      <div className="grid grid-cols-2 gap-2">
+                        <button
+                          type="button"
+                          onClick={() => openLightbox(project)}
+                          className="btn-ghost inline-flex items-center justify-center gap-1.5 rounded-full px-3 py-2 text-xs font-bold text-cream"
+                        >
+                          <Eye className="h-3.5 w-3.5" />
+                          Скриншот
+                        </button>
+                        {project.demoUrl && (
+                          <a
+                            href={project.demoUrl}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="btn-gold group/btn inline-flex items-center justify-center gap-1.5 rounded-full px-3 py-2 text-xs font-bold"
+                          >
+                            {project.demoLabel || "Сайт"}
+                            <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
+                          </a>
+                        )}
+                      </div>
                     )}
                   </div>
                 </div>
@@ -407,6 +442,33 @@ function ProjectsSection() {
             ))}
           </AnimatePresence>
         </motion.div>
+
+        {/* Expand / Collapse Button (when in 'all' view and there are more than 3 projects) */}
+        {activeCategory === "all" && filtered.length > 3 && (
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mt-12 flex justify-center"
+          >
+            <button
+              type="button"
+              onClick={() => setIsExpanded((prev) => !prev)}
+              className="btn-gold group/expand inline-flex items-center gap-2.5 rounded-full px-8 py-3.5 text-xs font-bold shadow-gold-sm transition-all hover:shadow-gold-lg"
+            >
+              <span>
+                {isExpanded
+                  ? "Скрыть часть проектов"
+                  : `Смотреть все проекты (${filtered.length})`}
+              </span>
+              <ChevronDown
+                className={`h-4 w-4 transition-transform duration-300 ${
+                  isExpanded ? "rotate-180" : "group-hover/expand:translate-y-0.5"
+                }`}
+              />
+            </button>
+          </motion.div>
+        )}
       </div>
 
       {/* --- Lightbox --- */}
