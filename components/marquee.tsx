@@ -3,14 +3,16 @@
 import React from "react";
 
 const ITEMS = [
-  "React",
-  "Next.js",
+  "React & Next.js 14",
+  "Telegram Mini Apps",
   "TypeScript",
+  "SaaS-архитектура",
+  "PostgreSQL & Supabase",
   "Tailwind CSS",
-  "UX Design",
+  "Human UX & Empathy",
   "Framer Motion",
-  "Адаптивность",
-  "Производительность",
+  "Cron-автоматизация",
+  "AI в разработке",
 ];
 
 function Marquee() {
