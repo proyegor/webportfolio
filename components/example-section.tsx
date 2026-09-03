@@ -46,13 +46,11 @@ const projects = [
     coverImage: "/images/quickbook/slide-1.webp",
     image: "/images/quickbook/slide-1.webp",
     slides: [
-      { title: "Титульный слайд — Презентация", image: "/images/quickbook/slide-1.webp" },
-      { title: "Проблема vs Решение QuickBook", image: "/images/quickbook/slide-2.webp" },
-      { title: "Ключевые модули системы", image: "/images/quickbook/slide-3.webp" },
-      { title: "Путь клиента в Telegram Mini App", image: "/images/quickbook/slide-4.webp" },
-      { title: "Онлайн-запись в 3 клика", image: "/images/quickbook/slide-5.webp" },
-      { title: "Личный кабинет мастера & Аналитика", image: "/images/quickbook/slide-6.webp" },
-      { title: "Тарифы и возможности", image: "/images/quickbook/slide-7.webp" },
+      { title: "Панель управления — Управление записями клиентов", image: "/images/quickbook/slide-1.webp" },
+      { title: "Реквизиты и способы оплаты (СБП, Карты, Crypto, Stars)", image: "/images/quickbook/slide-2.webp" },
+      { title: "Онлайн-запись клиентов — 12 готовых сфер бизнеса", image: "/images/quickbook/slide-3.webp" },
+      { title: "Аналитика и выручка — Ключевые показатели бизнеса", image: "/images/quickbook/slide-4.webp" },
+      { title: "QR-код заведения, ссылки и готовые шаблоны сообщений", image: "/images/quickbook/slide-5.webp" },
     ],
     tags: [
       "Next.js 14",
