@@ -214,7 +214,7 @@ function CTASection() {
 
                 {/* Telegram / WhatsApp */}
                 <a
-                  href="https://t.me/Yegor_Pro"
+                  href="https://t.me/proyegor"
                   target="_blank"
                   rel="noreferrer"
                   className="group flex items-center justify-between gap-4 rounded-2xl border border-cream/5 bg-ink-950/40 p-4 transition-colors duration-300 hover:border-gold/25"
@@ -228,7 +228,7 @@ function CTASection() {
                         Telegram / WhatsApp
                       </div>
                       <div className="truncate text-sm font-bold text-cream">
-                        @Yegor_Pro
+                        @proyegor
                       </div>
                     </div>
                   </div>
@@ -359,12 +359,12 @@ function CTASection() {
                             </a>{" "}
                             или в Telegram{" "}
                             <a
-                              href="https://t.me/Yegor_Pro"
+                              href="https://t.me/proyegor"
                               target="_blank"
                               rel="noreferrer"
                               className="font-bold underline decoration-gold/50 underline-offset-2 hover:text-gold-light"
                             >
-                              @Yegor_Pro
+                              @proyegor
                             </a>
                             .
                           </span>

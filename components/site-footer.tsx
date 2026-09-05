@@ -83,13 +83,13 @@ function SiteFooter() {
                 dbkuper89@gmail.com
               </a>
               <a
-                href="https://t.me/Yegor_Pro"
+                href="https://t.me/proyegor"
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center gap-2.5 text-sm font-semibold text-cream transition-colors hover:text-gold-light"
               >
                 <MessageSquare className="h-4 w-4 text-gold" />
-                @Yegor_Pro (Telegram / WhatsApp)
+                @proyegor (Telegram / WhatsApp)
               </a>
             </div>
             <p className="mt-3 text-xs leading-relaxed text-cream-dim">
