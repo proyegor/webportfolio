@@ -169,49 +169,52 @@ function SiteHeader() {
             className="fixed inset-0 z-[-1] bg-ink-950/95 backdrop-blur-2xl md:hidden"
           >
             <div className="flex h-full flex-col justify-between px-6 pb-10 pt-28">
-              <nav className="flex flex-col gap-1">
+              <nav className="flex flex-col gap-2">
                 {NAV_LINKS.map((link, i) => (
                   <motion.div
                     key={link.href}
-                    initial={{ opacity: 0, x: -24 }}
+                    initial={{ opacity: 0, x: -16 }}
                     animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -24 }}
-                    transition={{ delay: 0.08 + i * 0.07, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                    exit={{ opacity: 0, x: -16 }}
+                    transition={{ delay: 0.06 + i * 0.05, duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
                   >
                     <Link
                       href={link.href}
                       onClick={() => setIsMenuOpen(false)}
-                      className="group flex items-baseline gap-4 py-3.5"
+                      className="group flex items-center justify-between rounded-2xl border border-cream/5 bg-cream/[0.02] px-4 py-3.5 transition-all duration-300 hover:border-gold/30 hover:bg-gold/5"
                     >
-                      <span className="font-display text-sm italic text-gold/60">
-                        0{i + 1}
-                      </span>
-                      <span className="font-display text-4xl font-medium text-cream transition-colors group-hover:text-gold-light">
-                        {link.label}
-                      </span>
+                      <div className="flex items-center gap-3.5">
+                        <span className="flex h-7 w-7 items-center justify-center rounded-lg border border-gold/20 bg-gold/10 font-mono text-[11px] font-semibold text-gold">
+                          0{i + 1}
+                        </span>
+                        <span className="text-base font-medium tracking-wide text-cream transition-colors group-hover:text-gold-light">
+                          {link.label}
+                        </span>
+                      </div>
+                      <ArrowUpRight className="h-4 w-4 text-cream/25 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-gold" />
                     </Link>
                   </motion.div>
                 ))}
               </nav>
 
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 20 }}
-                transition={{ delay: 0.4, duration: 0.4 }}
-                className="space-y-5"
+                exit={{ opacity: 0, y: 16 }}
+                transition={{ delay: 0.3, duration: 0.35 }}
+                className="space-y-4"
               >
-                <div className="hairline" />
+                <div className="h-px bg-cream/10" />
                 <Link
                   href="#contact"
                   onClick={() => setIsMenuOpen(false)}
-                  className="btn-gold flex items-center justify-center gap-2 rounded-full px-6 py-4 text-sm font-bold"
+                  className="btn-gold flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-xs font-bold shadow-gold-sm"
                 >
                   Обсудить проект
-                  <ArrowUpRight className="h-4 w-4" />
+                  <ArrowUpRight className="h-3.5 w-3.5" />
                 </Link>
-                <div className="flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] text-cream/40">
-                  <MonitorSmartphone className="h-3.5 w-3.5 text-gold/60" />
+                <div className="flex items-center justify-center gap-2 text-[10px] uppercase tracking-[0.18em] text-cream/40">
+                  <MonitorSmartphone className="h-3 w-3 text-gold/60" />
                   Адаптивная разработка · React · Next.js
                 </div>
               </motion.div>

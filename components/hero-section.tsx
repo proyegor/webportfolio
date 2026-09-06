@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   motion,
   useScroll,
@@ -52,14 +52,23 @@ function Counter({
 
 export function HeroSection() {
   const sectionRef = useRef<HTMLElement>(null);
+  const [isDesktop, setIsDesktop] = useState(false);
 
-  // Parallax on the portrait as the page scrolls
+  useEffect(() => {
+    const media = window.matchMedia("(min-width: 1024px)");
+    setIsDesktop(media.matches);
+    const listener = (e: MediaQueryListEvent) => setIsDesktop(e.matches);
+    media.addEventListener("change", listener);
+    return () => media.removeEventListener("change", listener);
+  }, []);
+
+  // Parallax on the portrait as the page scrolls: only subtle parallax on desktop where it is side-by-side with text
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start start", "end start"],
   });
-  const portraitY = useTransform(scrollYProgress, [0, 1], [0, 90]);
-  const portraitRotate = useTransform(scrollYProgress, [0, 1], [0, -4]);
+  const portraitY = useTransform(scrollYProgress, [0, 1], [0, isDesktop ? 35 : 0]);
+  const portraitRotate = useTransform(scrollYProgress, [0, 1], [0, isDesktop ? -2 : 0]);
   const textY = useTransform(scrollYProgress, [0, 1], [0, -50]);
   const fade = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
 
@@ -73,7 +82,7 @@ export function HeroSection() {
     <section
       id="top"
       ref={sectionRef}
-      className="glow-ambient relative overflow-hidden pt-28 pb-16 sm:pt-32 lg:pt-36 lg:pb-20"
+      className="glow-ambient relative overflow-hidden pt-28 pb-20 sm:pt-32 sm:pb-24 lg:pt-36 lg:pb-28"
     >
       {/* Ambient animated orbs */}
       <motion.div
@@ -198,7 +207,7 @@ export function HeroSection() {
             initial={{ opacity: 0, scale: 0.92, y: 30 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 1, ease: EASE, delay: 0.3 }}
-            className="relative mx-auto w-full max-w-[26rem] lg:col-span-5 lg:max-w-none"
+            className="relative mx-auto w-full max-w-[26rem] pb-6 lg:col-span-5 lg:max-w-none lg:pb-0"
           >
             <motion.div style={{ y: portraitY, rotate: portraitRotate }} className="relative">
               {/* Gold frame */}
