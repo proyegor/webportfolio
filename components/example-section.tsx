@@ -36,6 +36,59 @@ function TelegramIcon({ className = "h-4 w-4" }: { className?: string }) {
    ════════════════════════════════════════════════════════════════════ */
 const projects = [
   {
+    id: "project-psyroot",
+    title: "PsyRoot — Психодиагностика & SaaS-кабинет",
+    category: "psychology",
+    categoryName: "HealthTech & SaaS",
+    badge: "Флагманский HealthTech",
+    description:
+      "Полнофункциональный веб-сервис на стыке HealthTech и SaaS: открытый каталог доказательных тестов с серверным авторасчётом и закрытый SaaS-кабинет (мини-CRM) для практикующих специалистов.",
+    coverImage: "/images/psyroot/slide-1.png",
+    image: "/images/psyroot/slide-1.png",
+    slides: [
+      {
+        title: "Главный экран — Каталог специалистов и доказательная самодиагностика",
+        image: "/images/psyroot/slide-1.png",
+      },
+      {
+        title: "Каталог методик — 20+ доказательных тестов с авторасчётом (ВОЗ-5, ISI и др.)",
+        image: "/images/psyroot/slide-2.png",
+      },
+      {
+        title: "Возможности платформы — Каталог специалистов, автообсчёт и мини-CRM",
+        image: "/images/psyroot/slide-3.png",
+      },
+      {
+        title: "Принцип работы — Пошаговый сбор анамнеза и первичный приём",
+        image: "/images/psyroot/slide-4.png",
+      },
+      {
+        title: "Научный агрегатор — Автоматический сбор и перевод актуальных исследований",
+        image: "/images/psyroot/slide-5.png",
+      },
+    ],
+    tags: [
+      "Next.js 14 App Router",
+      "TypeScript",
+      "Supabase (PostgreSQL / RLS)",
+      "Server Actions",
+      "Vitest (90+ тестов)",
+      "Tailwind & Shadcn UI",
+    ],
+    highlights: [
+      "Серверный авторасчёт 15+ методик (Big Five, PSS-10, ISI) и кризисный роутинг (PHQ-9)",
+      "Мини-CRM и Intake Forms: пошаговый сбор анамнеза по ссылкам /intake/[id]",
+      "Гибридный каталог по ст. 1274 ГК РФ и PRO-биллинг с ручной модерацией",
+      "Calm Tech (WCAG AAA 7.5:1), 90+ тестов Vitest и CI/CD на GitHub Actions",
+    ],
+    techStack:
+      "Next.js 14+ (App Router, Server Actions), TypeScript, Supabase (PostgreSQL, Row Level Security, Auth), Tailwind CSS, Shadcn UI, Vitest, Lucide Icons, Vercel",
+    webUrl: "https://psyroot.space/",
+    demoUrl: "https://psyroot.space/",
+    demoLabel: "psyroot.space",
+    isTelegram: false,
+  },
+  {
     id: "project-quickbook",
     title: "QuickBook — SaaS & Telegram Mini App",
     category: "telegram",
@@ -65,6 +118,8 @@ const projects = [
       "Автонапоминания клиентам за 24 ч и 1 ч в Telegram",
       "Личный кабинет мастера: график, услуги и СБП",
     ],
+    techStack:
+      "Next.js 14, Telegram Mini Apps (TMA SDK), TypeScript, Supabase (PostgreSQL), Cron Automation, Tailwind CSS, Vercel",
     webUrl: "https://quickbook24.vercel.app/",
     telegramUrl: "https://t.me/quickbook_app_bot",
     demoUrl: "https://quickbook24.vercel.app/",
@@ -88,6 +143,7 @@ const projects = [
       "Услуги и частые вопросы разложены по полочкам",
       "Форма записи из трёх полей, без лишних шагов",
     ],
+    techStack: "React, Next.js, Tailwind CSS, Framer Motion, Vercel",
     demoUrl: "https://eprokopenkov.online",
     demoLabel: "Открыть сайт",
     isTelegram: false,
@@ -107,6 +163,7 @@ const projects = [
       "Версии на русском и английском, корзина цифровых товаров и админка",
       "Игровое оформление, которое хорошо смотрится и на телефоне, и на компьютере",
     ],
+    techStack: "React, Next.js, Tailwind CSS, i18n, Vercel",
     demoUrl: "https://englishnest.vercel.app/",
     demoLabel: "Открыть сайт",
     isTelegram: false,
@@ -126,6 +183,7 @@ const projects = [
       "Фотографии не тормозят загрузку даже на слабом интернете",
       "Кнопки и меню рассчитаны на пальцы, а не на курсор",
     ],
+    techStack: "Next.js, Tailwind CSS, Framer Motion, Vercel",
     demoUrl: "https://pizza-vita.vercel.app/",
     demoLabel: "Открыть сайт",
     isTelegram: false,
@@ -134,8 +192,8 @@ const projects = [
 
 const FILTERS = [
   { id: "all", label: "Все проекты" },
+  { id: "psychology", label: "Психология & HealthTech" },
   { id: "telegram", label: "Telegram Apps & SaaS" },
-  { id: "psychology", label: "UX & Психология" },
   { id: "edtech", label: "EdTech & Обучение" },
   { id: "ecommerce", label: "E-Commerce" },
 ];
@@ -337,7 +395,7 @@ function ProjectsSection() {
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.5, ease: EASE, delay: idx * 0.05 }}
                 className={`card-premium group flex flex-col overflow-hidden rounded-[1.5rem] ${
-                  project.id === "project-quickbook"
+                  "badge" in project && project.badge
                     ? "border-gold/30 shadow-[0_20px_50px_-20px_rgba(201,161,94,0.2)]"
                     : ""
                 }`}
@@ -419,7 +477,7 @@ function ProjectsSection() {
                           className="btn-ghost inline-flex items-center justify-center gap-1.5 rounded-full px-3 py-2 text-xs font-bold text-cream"
                         >
                           <Eye className="h-3.5 w-3.5" />
-                          Скриншот
+                          {"slides" in project && project.slides ? "Слайды" : "Скриншот"}
                         </button>
                         {project.demoUrl && (
                           <a
@@ -533,13 +591,19 @@ function ProjectsSection() {
               {"slides" in selected && selected.slides ? (
                 <div className="flex flex-1 flex-col overflow-hidden bg-ink-950/80">
                   {/* Active slide view */}
-                  <div className="relative flex-1 flex items-center justify-center p-3 sm:p-6 overflow-y-auto max-h-[60vh]">
+                  <div className="relative flex flex-1 flex-col items-center justify-center p-3 sm:p-6 overflow-y-auto max-h-[60vh]">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={selected.slides[slideIndex].image}
                       alt={selected.slides[slideIndex].title}
-                      className="max-h-[56vh] w-auto max-w-full rounded-2xl shadow-2xl border border-cream/10 object-contain"
+                      className="max-h-[50vh] w-auto max-w-full rounded-2xl shadow-2xl border border-cream/10 object-contain"
                     />
+
+                    <div className="mt-3 px-4 text-center">
+                      <p className="text-xs sm:text-sm font-medium text-cream/90">
+                        {selected.slides[slideIndex].title}
+                      </p>
+                    </div>
 
                     {/* Prev / Next buttons */}
                     <button
@@ -607,9 +671,16 @@ function ProjectsSection() {
 
               {/* Footer */}
               <div className="flex flex-col gap-3 border-t border-cream/5 px-5 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-7">
-                <p className="text-xs leading-relaxed text-cream-muted sm:max-w-md">
-                  {selected.description}
-                </p>
+                <div className="flex flex-col gap-1.5 sm:max-w-xl">
+                  <p className="text-xs leading-relaxed text-cream-muted">
+                    {selected.description}
+                  </p>
+                  {"techStack" in selected && selected.techStack && (
+                    <p className="text-[11px] leading-relaxed text-cream-dim">
+                      <span className="font-semibold text-gold/90">Стек:</span> {selected.techStack}
+                    </p>
+                  )}
+                </div>
                 <div className="flex flex-wrap items-center gap-2.5">
                   {"pdfUrl" in selected && selected.pdfUrl && (
                     <a
