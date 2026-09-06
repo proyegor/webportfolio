@@ -37,7 +37,7 @@ function TelegramIcon({ className = "h-4 w-4" }: { className?: string }) {
 const projects = [
   {
     id: "project-psyroot",
-    title: "PsyRoot — Психодиагностика & SaaS-кабинет",
+    title: "PsyRoot - Психодиагностика & SaaS-кабинет",
     category: "psychology",
     categoryName: "HealthTech & SaaS",
     badge: "Флагманский HealthTech",
@@ -47,23 +47,23 @@ const projects = [
     image: "/images/psyroot/slide-1.png",
     slides: [
       {
-        title: "Главный экран — Каталог специалистов и доказательная самодиагностика",
+        title: "Главный экран - Каталог специалистов и доказательная самодиагностика",
         image: "/images/psyroot/slide-1.png",
       },
       {
-        title: "Каталог методик — 20+ доказательных тестов с авторасчётом (ВОЗ-5, ISI и др.)",
+        title: "Каталог методик - 20+ доказательных тестов с авторасчётом (ВОЗ-5, ISI и др.)",
         image: "/images/psyroot/slide-2.png",
       },
       {
-        title: "Возможности платформы — Каталог специалистов, автообсчёт и мини-CRM",
+        title: "Возможности платформы - Каталог специалистов, автообсчёт и мини-CRM",
         image: "/images/psyroot/slide-3.png",
       },
       {
-        title: "Принцип работы — Пошаговый сбор анамнеза и первичный приём",
+        title: "Принцип работы - Пошаговый сбор анамнеза и первичный приём",
         image: "/images/psyroot/slide-4.png",
       },
       {
-        title: "Научный агрегатор — Автоматический сбор и перевод актуальных исследований",
+        title: "Научный агрегатор - Автоматический сбор и перевод актуальных исследований",
         image: "/images/psyroot/slide-5.png",
       },
     ],
@@ -90,7 +90,7 @@ const projects = [
   },
   {
     id: "project-quickbook",
-    title: "QuickBook — SaaS & Telegram Mini App",
+    title: "QuickBook - SaaS & Telegram Mini App",
     category: "telegram",
     categoryName: "Telegram & SaaS",
     badge: "Флагманский SaaS",
@@ -99,10 +99,10 @@ const projects = [
     coverImage: "/images/quickbook/slide-1.webp",
     image: "/images/quickbook/slide-1.webp",
     slides: [
-      { title: "Панель управления — Управление записями клиентов", image: "/images/quickbook/slide-1.webp" },
+      { title: "Панель управления - Управление записями клиентов", image: "/images/quickbook/slide-1.webp" },
       { title: "Реквизиты и способы оплаты (СБП, Карты, Crypto, Stars)", image: "/images/quickbook/slide-2.webp" },
-      { title: "Онлайн-запись клиентов — 12 готовых сфер бизнеса", image: "/images/quickbook/slide-3.webp" },
-      { title: "Аналитика и выручка — Ключевые показатели бизнеса", image: "/images/quickbook/slide-4.webp" },
+      { title: "Онлайн-запись клиентов - 12 готовых сфер бизнеса", image: "/images/quickbook/slide-3.webp" },
+      { title: "Аналитика и выручка - Ключевые показатели бизнеса", image: "/images/quickbook/slide-4.webp" },
       { title: "QR-код заведения, ссылки и готовые шаблоны сообщений", image: "/images/quickbook/slide-5.webp" },
     ],
     tags: [
@@ -129,6 +129,26 @@ const projects = [
     pdfLabel: "Презентация (PDF)",
   },
   {
+    id: "project-english",
+    title: "Интернет-магазин материалов «EnglishNest»",
+    category: "edtech",
+    categoryName: "EdTech & E-Commerce",
+    description:
+      "Интернет-магазин интерактивных учебных материалов для учителей английского языка (дети 5-12 лет). Всё цифровое: купил - скачал - занимайся.",
+    coverImage: "/images/english-nest-cover.jpg",
+    image: "/images/english-school-full.webp",
+    tags: ["React", "Next.js", "Digital E-Commerce", "i18n (RU/EN)", "Admin Panel"],
+    highlights: [
+      "Каталог с поиском и фильтрами - нужный материал находится за пару кликов",
+      "Версии на русском и английском, корзина цифровых товаров и админка",
+      "Игровое оформление, которое хорошо смотрится и на телефоне, и на компьютере",
+    ],
+    techStack: "React, Next.js, Tailwind CSS, i18n, Vercel",
+    demoUrl: "https://englishnest.vercel.app/",
+    demoLabel: "Открыть сайт",
+    isTelegram: false,
+  },
+  {
     id: "project-psychology",
     title: "Психологический кабинет и онлайн-платформа",
     category: "psychology",
@@ -145,26 +165,6 @@ const projects = [
     ],
     techStack: "React, Next.js, Tailwind CSS, Framer Motion, Vercel",
     demoUrl: "https://eprokopenkov.online",
-    demoLabel: "Открыть сайт",
-    isTelegram: false,
-  },
-  {
-    id: "project-english",
-    title: "Интернет-магазин материалов «EnglishNest»",
-    category: "edtech",
-    categoryName: "EdTech & E-Commerce",
-    description:
-      "Интернет-магазин интерактивных учебных материалов для учителей английского языка (дети 5–12 лет). Всё цифровое: купил - скачал - занимайся.",
-    coverImage: "/images/english-nest-cover.jpg",
-    image: "/images/english-school-full.webp",
-    tags: ["React", "Next.js", "Digital E-Commerce", "i18n (RU/EN)", "Admin Panel"],
-    highlights: [
-      "Каталог с поиском и фильтрами - нужный материал находится за пару кликов",
-      "Версии на русском и английском, корзина цифровых товаров и админка",
-      "Игровое оформление, которое хорошо смотрится и на телефоне, и на компьютере",
-    ],
-    techStack: "React, Next.js, Tailwind CSS, i18n, Vercel",
-    demoUrl: "https://englishnest.vercel.app/",
     demoLabel: "Открыть сайт",
     isTelegram: false,
   },
@@ -342,7 +342,7 @@ function ProjectsSection() {
             className="max-w-md text-sm leading-relaxed text-cream-muted sm:text-base"
           >
             Сайты, SaaS-платформы и Telegram Mini Apps, сделанные от идеи до запуска.
-            Каждый — под конкретную задачу бизнеса.
+            Каждый - под конкретную задачу бизнеса.
           </motion.p>
         </div>
 
