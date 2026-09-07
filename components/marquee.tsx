@@ -19,7 +19,7 @@ function Marquee() {
   const row = [...ITEMS, ...ITEMS];
 
   return (
-    <div className="relative z-20 overflow-hidden border-y border-dashed border-cream/15 bg-ink-950/90 py-3.5 sm:py-4 backdrop-blur-md">
+    <div className="relative z-20 my-6 sm:my-8 lg:my-10 overflow-hidden border-y border-dashed border-cream/15 bg-ink-950/90 py-3.5 sm:py-4 backdrop-blur-md">
       {/* Edge fades */}
       <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 sm:w-32 bg-gradient-to-r from-ink-950 to-transparent" />
       <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 sm:w-32 bg-gradient-to-l from-ink-950 to-transparent" />

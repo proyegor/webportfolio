@@ -272,10 +272,13 @@ function ProjectsSection() {
       ? projects
       : projects.filter((p) => p.category === activeCategory);
 
-  // When 'all' is selected and not expanded, show top 3 projects (1 row of 3 columns)
+  // When 'all' is selected and not expanded:
+  // - on mobile (1 col): 3 projects
+  // - on desktop (3 cols): 3 projects
+  // - on tablet / mobile desktop mode (2 cols, 768-1023px): 4 projects (fills 2x2 grid)
   const displayedProjects =
     activeCategory === "all" && !isExpanded
-      ? filtered.slice(0, 3)
+      ? filtered.slice(0, 4)
       : filtered;
 
   // Close lightbox with Escape / arrow keys
@@ -386,20 +389,25 @@ function ProjectsSection() {
         {/* 3-Column Cards Grid */}
         <motion.div layout className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           <AnimatePresence mode="popLayout">
-            {displayedProjects.map((project, idx) => (
-              <motion.article
-                key={project.id}
-                layout
-                initial={{ opacity: 0, y: 32, scale: 0.97 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.5, ease: EASE, delay: idx * 0.05 }}
-                className={`card-premium group flex flex-col overflow-hidden rounded-[1.5rem] ${
-                  "badge" in project && project.badge
-                    ? "border-gold/30 shadow-[0_20px_50px_-20px_rgba(201,161,94,0.2)]"
-                    : ""
-                }`}
-              >
+            {displayedProjects.map((project, idx) => {
+              const isFourthCollapsedItem =
+                activeCategory === "all" && !isExpanded && idx === 3;
+              return (
+                <motion.article
+                  key={project.id}
+                  layout
+                  initial={{ opacity: 0, y: 32, scale: 0.97 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.5, ease: EASE, delay: idx * 0.05 }}
+                  className={`card-premium group flex-col overflow-hidden rounded-[1.5rem] ${
+                    isFourthCollapsedItem ? "hidden md:flex lg:hidden" : "flex"
+                  } ${
+                    "badge" in project && project.badge
+                      ? "border-gold/30 shadow-[0_20px_50px_-20px_rgba(201,161,94,0.2)]"
+                      : ""
+                  }`}
+                >
                 <ProjectImage project={project} onOpen={() => openLightbox(project)} />
 
                 <div className="flex flex-1 flex-col p-6">
@@ -495,7 +503,8 @@ function ProjectsSection() {
                   </div>
                 </div>
               </motion.article>
-            ))}
+            );
+          })}
           </AnimatePresence>
         </motion.div>
 
