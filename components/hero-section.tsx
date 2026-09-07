@@ -227,10 +227,8 @@ export function HeroSection() {
               </div>
 
               {/* Floating badge: clean code */}
-              <motion.div
-                className="glass absolute -left-4 top-8 flex items-center gap-3 rounded-2xl px-4 py-3 shadow-xl sm:-left-10"
-                animate={{ y: [0, -8, 0] }}
-                transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
+              <div
+                className="glass animate-float-subtle-up absolute -left-4 top-8 flex items-center gap-3 rounded-2xl px-4 py-3 shadow-xl transition-transform duration-300 hover:scale-105 sm:-left-10"
               >
                 <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gold/15 text-gold">
                   <Code2 className="h-5 w-5" />
@@ -239,13 +237,11 @@ export function HeroSection() {
                   <div className="text-xs font-bold text-cream">Clean Code</div>
                   <div className="text-[10px] text-cream-muted">React · Next.js · TS</div>
                 </div>
-              </motion.div>
+              </div>
 
               {/* Floating badge: UX empathy */}
-              <motion.div
-                className="glass absolute -right-3 bottom-24 flex items-center gap-3 rounded-2xl px-4 py-3 shadow-xl sm:-right-8"
-                animate={{ y: [0, 8, 0] }}
-                transition={{ repeat: Infinity, duration: 4.2, ease: "easeInOut", delay: 0.8 }}
+              <div
+                className="glass animate-float-subtle-down absolute -right-3 bottom-24 flex items-center gap-3 rounded-2xl px-4 py-3 shadow-xl transition-transform duration-300 hover:scale-105 sm:-right-8"
               >
                 <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gold/15 text-gold">
                   <HeartHandshake className="h-5 w-5" />
@@ -254,7 +250,7 @@ export function HeroSection() {
                   <div className="text-xs font-bold text-cream">UX-эмпатия</div>
                   <div className="text-[10px] text-cream-muted">10 лет в психологии</div>
                 </div>
-              </motion.div>
+              </div>
             </motion.div>
           </motion.div>
         </div>
