@@ -1,12 +1,11 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   motion,
   useScroll,
   useTransform,
   useInView,
-  useMotionValue,
   animate,
 } from "framer-motion";
 import Image from "next/image";
@@ -15,7 +14,7 @@ import { ArrowRight, Brain, Sparkles, Code2, HeartHandshake } from "lucide-react
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
-/* Animated counter that counts up once visible */
+/* Animated counter that counts up once visible and preserves value in React state */
 function Counter({
   to,
   suffix = "",
@@ -26,28 +25,26 @@ function Counter({
   prefix?: string;
 }) {
   const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-60px" });
-  const value = useMotionValue(0);
+  const inView = useInView(ref, { once: true, margin: "0px 0px -20px 0px" });
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
     if (!inView) return;
-    const controls = animate(value, to, {
-      duration: 1.8,
+    const controls = animate(0, to, {
+      duration: 1.6,
       ease: [0.16, 1, 0.3, 1],
+      onUpdate: (latest) => {
+        setCount(Math.round(latest));
+      },
     });
     return () => controls.stop();
-  }, [inView, to, value]);
+  }, [inView, to]);
 
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const unsub = value.on("change", (v) => {
-      el.textContent = `${prefix}${Math.round(v)}${suffix}`;
-    });
-    return unsub;
-  }, [value, prefix, suffix]);
-
-  return <span ref={ref}>{prefix}0{suffix}</span>;
+  return (
+    <span ref={ref}>
+      {prefix}{count}{suffix}
+    </span>
+  );
 }
 
 export function HeroSection() {
