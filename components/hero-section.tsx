@@ -228,7 +228,7 @@ export function HeroSection() {
 
               {/* Floating badge: clean code */}
               <div
-                className="glass animate-float-subtle-up absolute -left-4 top-8 flex items-center gap-3 rounded-2xl px-4 py-3 shadow-xl transition-transform duration-300 hover:scale-105 sm:-left-10"
+                className="glass animate-float-calm absolute -left-4 top-8 flex items-center gap-3 rounded-2xl px-4 py-3 shadow-xl sm:-left-10"
               >
                 <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gold/15 text-gold">
                   <Code2 className="h-5 w-5" />
@@ -241,7 +241,7 @@ export function HeroSection() {
 
               {/* Floating badge: UX empathy */}
               <div
-                className="glass animate-float-subtle-down absolute -right-3 bottom-24 flex items-center gap-3 rounded-2xl px-4 py-3 shadow-xl transition-transform duration-300 hover:scale-105 sm:-right-8"
+                className="glass animate-float-calm absolute -right-3 bottom-24 flex items-center gap-3 rounded-2xl px-4 py-3 shadow-xl sm:-right-8"
               >
                 <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gold/15 text-gold">
                   <HeartHandshake className="h-5 w-5" />
