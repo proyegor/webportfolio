@@ -89,7 +89,7 @@ const config = {
         },
         "float-calm": {
           "0%, 100%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(-4px)" },
+          "50%": { transform: "translateY(-7px)" },
         },
         "pulse-glow": {
           "0%, 100%": { opacity: "0.5", transform: "scale(1)" },
